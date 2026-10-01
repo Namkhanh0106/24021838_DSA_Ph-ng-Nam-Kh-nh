@@ -13,3 +13,6 @@ int main() {
     cout << sum << endl;
     return 0;
 }
+
+// độ phức tạp thời gian: O(n)
+// độ phúc bộ nhớ: O(n)
