@@ -1,0 +1,43 @@
+#ifndef QUEUE_H
+#define QUEUE_H
+
+#include <iostream>
+#include "Node.h"
+using namespace std;
+
+bool isQueueEmpty(Node* frontNode) {
+    return frontNode == nullptr;
+}
+
+void enqueue(Node*& frontNode, Node*& tailNode, int value) {
+    Node* newNode = new Node(value);
+    if (isQueueEmpty(frontNode)) {
+        frontNode = tailNode = newNode;
+    } else {
+        tailNode->next = newNode;
+        tailNode = newNode;
+    }
+}
+
+void dequeue(Node*& frontNode, Node*& tailNode) {
+    if (isQueueEmpty(frontNode)) {
+        cout << "Queue rong, khong the dequeue!\n";
+        return;
+    }
+    Node* nodeCanXoa = frontNode;  
+    frontNode = frontNode->next;   
+    
+    if (frontNode == nullptr) {
+        tailNode = nullptr;      
+    }
+    delete nodeCanXoa;           
+}
+
+int frontQueue(Node* frontNode) {
+    if (isQueueEmpty(frontNode)) {
+        cout << "Queue rong!\n";
+        return -1;
+    }
+    return frontNode->value;      
+}
+#endif
