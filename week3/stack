@@ -1,0 +1,36 @@
+#ifndef STACK_H
+#define STACK_H
+
+#include <iostream>
+#include "Node.h"
+using namespace std;
+
+bool isStackEmpty(Node* topNode) {
+    return topNode == nullptr;
+}
+
+void push(Node*& topNode, int value) {
+    Node* newNode = new Node(value); 
+    newNode->next = topNode;       
+    topNode = newNode;           
+}
+
+void pop(Node*& topNode) {
+    if (isStackEmpty(topNode)) {
+        cout << "Stack rong, khong the pop!\n";
+        return;
+    }
+    Node* nodeCanXoa = topNode;   
+    topNode = topNode->next;       
+    delete nodeCanXoa;           
+}
+
+int peekStack(Node* topNode) {
+    if (isStackEmpty(topNode)) {
+        cout << "Stack rong!\n";
+        return -1;
+    }
+    return topNode->value;         
+}
+
+#endif
